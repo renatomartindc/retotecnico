@@ -1,5 +1,5 @@
 server:
-  port: ${PORT_SERVER}
+  port: 8081
 ---
 springbootwebfluxjjwt:
   password:
@@ -12,4 +12,4 @@ spring:
   profiles: default
   data:
     mongodb:
-        uri: ${CONEXION_MONGO}/divisasdb
+        uri: mongodb://user-divisa:Rktj11KVEzU1Xrb5@20.114.180.154:27017/divisasdb

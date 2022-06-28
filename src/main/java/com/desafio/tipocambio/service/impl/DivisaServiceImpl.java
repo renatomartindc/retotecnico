@@ -22,7 +22,8 @@ public class DivisaServiceImpl implements DivisaService {
 @Override
 public Mono<Divisa> addDivisa(DivisaRequest divisaRequest) {
 	
-	DivisaMap divisaMap = new DivisaMap();
+	   log.info("Service divisaRequest codigo:"+divisaRequest.getCodigo());
+	   log.info("Service divisaRequest descripcion:"+divisaRequest.getDescripcion());
 	
 	return divisaDao.addDivisa(divisaRequest).map( flowDB -> {
 		

@@ -33,9 +33,12 @@ public class DivisaController {
 	@PostMapping(value = "/", produces = { MediaType.APPLICATION_STREAM_JSON_VALUE,
 			MediaType.APPLICATION_JSON_VALUE })
 	
-	public Mono<ResponseEntity<Divisa>> addDivisa(DivisaRequest divisaRequest) {
+	public Mono<ResponseEntity<Divisa>> addDivisa(@RequestBody DivisaRequest divisaRequest) {
 		
 		
+		   log.info("controller divisaRequest codigo:"+divisaRequest.getCodigo());
+		   log.info("controller divisaRequest descripcion:"+divisaRequest.getDescripcion());
+		   
 		return divisaService.addDivisa(divisaRequest).map(divisa ->		
 			{			
 				return new ResponseEntity<>(divisa, HttpStatus.OK);

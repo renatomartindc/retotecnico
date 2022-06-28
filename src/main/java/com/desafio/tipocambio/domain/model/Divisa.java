@@ -21,13 +21,8 @@ import lombok.Setter;
 @Document(collection = "divisa")
 public class Divisa {
 	
-	public Divisa (String codigo,String descripcion) {
-		this.codigo =codigo;
-		this.descripcion = descripcion;
-	}
-	
 	@Id
-	private Long id;
+	private String id;
 	private String codigo; //Example: USD; SOL, EUR
 	private String descripcion; //Dolares americanos, Nuevos Soles, Euro
 
