@@ -13,6 +13,7 @@ import com.desafio.tipocambio.request.DivisaRequest;
 import com.desafio.tipocambio.util.Constant;
 
 import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -27,13 +28,7 @@ public class DivisaDaoImpl implements DivisaDao {
 		   
 		   Divisa Divisa = new Divisa();
 		   DivisaMap divisaMap = new DivisaMap();
-		   log.info("divisaRequest codigo:"+divisaRequest.getCodigo());
-		   log.info("divisaRequest descripcion:"+divisaRequest.getDescripcion());
 		   divisaMap.mappingDivisa(divisaRequest, Divisa);
-		   
-		   log.info("Insertando Divisa");
-		   log.info("divisa codigo:"+Divisa.getCodigo());
-		   log.info("divisa Descripcion:"+Divisa.getDescripcion());
 		   
 		   return this.findbyCodigo(Divisa.getCodigo()).doOnSuccess(divisa -> {
 			   if(divisa!=null) {
@@ -46,6 +41,11 @@ public class DivisaDaoImpl implements DivisaDao {
 	@Override
 	public Mono<Divisa> findbyCodigo(String codigo) {
 		return divisaRepository.findByCodigo(codigo);
+	}
+
+	@Override
+	public Flux<Divisa> getAll() {
+		return divisaRepository.findAll();
 	}
 
 }

@@ -34,10 +34,6 @@ public class DivisaController {
 			MediaType.APPLICATION_JSON_VALUE })
 	
 	public Mono<ResponseEntity<Divisa>> addDivisa(@RequestBody DivisaRequest divisaRequest) {
-		
-		
-		   log.info("controller divisaRequest codigo:"+divisaRequest.getCodigo());
-		   log.info("controller divisaRequest descripcion:"+divisaRequest.getDescripcion());
 		   
 		return divisaService.addDivisa(divisaRequest).map(divisa ->		
 			{			
